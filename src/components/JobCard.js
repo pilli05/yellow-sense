@@ -1,24 +1,32 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { CiBookmark } from "react-icons/ci";
 import { FaUserTie } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoIosBookmark } from "react-icons/io";
 import { PiSuitcaseSimpleDuotone } from "react-icons/pi";
-import { BookMarkContext } from "../App";
 import { Oval } from "react-loader-spinner";
 
-const JobCard = ({ jobsList, setPageSize, pageSize, loader }) => {
-  const { bookMark, setBookMark } = useContext(BookMarkContext);
-  const [bookMarkedJobs, setBookMarkedJobs] = useState([]);
+const JobCard = ({
+  jobsList,
+  setPageSize,
+  pageSize,
+  loader,
+  jobsScreen,
+  bookMarkedJobsList,
+}) => {
+  const [bookMarkedJobs, setBookMarkedJobs] = useState([...bookMarkedJobsList]);
 
-  const handleBookMark = (job, bookMarked) => {
+  const handleBookMark = (job) => {
+    const bookMarked = bookMarkedJobs.some((item) => item.id === job.id);
+    let updateLocalStorage;
     if (!bookMarked) {
-      setBookMark(!bookMark);
-      setBookMarkedJobs([...bookMarkedJobs, job]);
+      updateLocalStorage = [...bookMarkedJobs, job];
     } else {
-      setBookMark(!bookMark);
-      setBookMarkedJobs(bookMarkedJobs.filter((item) => item.id !== job.id));
+      updateLocalStorage = bookMarkedJobs.filter((item) => item.id !== job.id);
     }
+
+    setBookMarkedJobs(updateLocalStorage);
+    localStorage.setItem("BookMarkedJobs", JSON.stringify(updateLocalStorage));
   };
 
   const increasePageSize = () => {
@@ -30,8 +38,6 @@ const JobCard = ({ jobsList, setPageSize, pageSize, loader }) => {
       setPageSize((prevValue) => prevValue - 1);
     }
   };
-
-  console.log(bookMarkedJobs);
 
   return (
     <div className="">
@@ -49,8 +55,13 @@ const JobCard = ({ jobsList, setPageSize, pageSize, loader }) => {
         </div>
       ) : null}
       <div className="mt-20">
-        {jobsList && jobsList.length > 0
-          ? jobsList.map((job, index) => (
+        {jobsList && jobsList.length > 0 ? (
+          jobsList.map((job, index) => {
+            const isBookMarked = bookMarkedJobs.some(
+              (jobs) => jobs.id === job.id
+            );
+
+            return (
               <div
                 className=" shadow  text-base my-3 px-3 border border-gray-300 mx-3 py-3 rounded-xl text-gray-800 flex items-start "
                 key={index}
@@ -66,18 +77,19 @@ const JobCard = ({ jobsList, setPageSize, pageSize, loader }) => {
                     <h1 className=" text-gray-700 bg-transparent font-bold text-[18px]">
                       {job.company_name}
                     </h1>
-                    {bookMark ? (
+
+                    {isBookMarked ? (
                       <IoIosBookmark
                         size={22}
-                        className="bg-transparent"
+                        className="bg-transparent cursor-pointer"
                         color="red"
-                        onClick={() => handleBookMark(job, true)}
+                        onClick={() => handleBookMark(job)}
                       />
                     ) : (
                       <CiBookmark
                         size={22}
-                        className="bg-transparent"
-                        onClick={() => handleBookMark(job, false)}
+                        className="bg-transparent cursor-pointer"
+                        onClick={() => handleBookMark(job)}
                       />
                     )}
                   </div>
@@ -117,29 +129,37 @@ const JobCard = ({ jobsList, setPageSize, pageSize, loader }) => {
                   </div>
                 </div>
               </div>
-            ))
-          : null}
+            );
+          })
+        ) : (
+          <div className="absolute w-full flex justify-center items-center h-[80%]">
+            <p className="text-xl">No BookMarked Jobs</p>
+          </div>
+        )}
       </div>
-      <div className="flex justify-between items-center my-5 px-5">
-        <button
-          className={
-            pageSize === 1
-              ? "display: none text-transparent"
-              : " border-yellow-400 border px-5 py-2 rounded-full font-bold  text-yellow-400 flex items-center  w-[160px] justify-center text-base "
-          }
-          type="button"
-          onClick={decreasePageSize}
-        >
-          Prev
-        </button>
-        <button
-          className="border border-purple-800 px-5 py-2 rounded-full font-bold  text-purple-800 flex items-center  w-[160px] justify-center text-base"
-          type="button"
-          onClick={increasePageSize}
-        >
-          Next
-        </button>
-      </div>
+
+      {jobsScreen ? (
+        <div className="flex justify-between items-center my-5 px-5">
+          <button
+            className={
+              pageSize === 1
+                ? "display: none text-transparent"
+                : " border-yellow-400 border px-5 py-2 rounded-full font-bold  text-yellow-400 flex items-center  w-[160px] justify-center text-base "
+            }
+            type="button"
+            onClick={decreasePageSize}
+          >
+            Prev
+          </button>
+          <button
+            className="border border-purple-800 px-5 py-2 rounded-full font-bold  text-purple-800 flex items-center  w-[160px] justify-center text-base"
+            type="button"
+            onClick={increasePageSize}
+          >
+            Next
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 };

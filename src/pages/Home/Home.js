@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaBookmark, FaUserTie } from "react-icons/fa";
 import Jobs from "../Jobs/Jobs";
 import Bookmarks from "../Bookmarks/Bookmarks";
@@ -45,9 +45,9 @@ const Home = () => {
             Welcome To YellowSense Job Portal
           </p>
         ) : jobsScreen ? (
-          <Jobs homeScreenActive={homeScreenActive} />
+          <Jobs homeScreenActive={homeScreenActive} jobsScreen={jobsScreen} />
         ) : bookMarksScreen ? (
-          <Bookmarks />
+          <Bookmarks homeScreenActive={homeScreenActive} />
         ) : null}
       </div>
       <div className="flex justify-between items-center rounded-t-2xl bg-[#081221] px-5 py-4 absolute bottom-0 left-0 w-full ">
