@@ -1,20 +1,24 @@
 import React, { useContext, useState } from "react";
 import { CiBookmark } from "react-icons/ci";
-import { FaRupeeSign, FaUserTie } from "react-icons/fa";
+import { FaUserTie } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
-import { IoIosBookmark, IoLogoWhatsapp } from "react-icons/io";
-import { MdOutlineCurrencyRupee } from "react-icons/md";
+import { IoIosBookmark } from "react-icons/io";
 import { PiSuitcaseSimpleDuotone } from "react-icons/pi";
 import { BookMarkContext } from "../App";
-import { Bars, Oval } from "react-loader-spinner";
+import { Oval } from "react-loader-spinner";
 
 const JobCard = ({ jobsList, setPageSize, pageSize, loader }) => {
-  console.log(jobsList);
-
   const { bookMark, setBookMark } = useContext(BookMarkContext);
+  const [bookMarkedJobs, setBookMarkedJobs] = useState([]);
 
-  const handleBookMark = (id) => {
-    console.log(id);
+  const handleBookMark = (job, bookMarked) => {
+    if (!bookMarked) {
+      setBookMark(!bookMark);
+      setBookMarkedJobs([...bookMarkedJobs, job]);
+    } else {
+      setBookMark(!bookMark);
+      setBookMarkedJobs(bookMarkedJobs.filter((item) => item.id !== job.id));
+    }
   };
 
   const increasePageSize = () => {
@@ -26,6 +30,8 @@ const JobCard = ({ jobsList, setPageSize, pageSize, loader }) => {
       setPageSize((prevValue) => prevValue - 1);
     }
   };
+
+  console.log(bookMarkedJobs);
 
   return (
     <div className="">
@@ -65,13 +71,13 @@ const JobCard = ({ jobsList, setPageSize, pageSize, loader }) => {
                         size={22}
                         className="bg-transparent"
                         color="red"
-                        onClick={() => handleBookMark(job.id)}
+                        onClick={() => handleBookMark(job, true)}
                       />
                     ) : (
                       <CiBookmark
                         size={22}
                         className="bg-transparent"
-                        onClick={() => handleBookMark(job.id)}
+                        onClick={() => handleBookMark(job, false)}
                       />
                     )}
                   </div>

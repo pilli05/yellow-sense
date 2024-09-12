@@ -45,7 +45,7 @@ const Home = () => {
             Welcome To YellowSense Job Portal
           </p>
         ) : jobsScreen ? (
-          <Jobs />
+          <Jobs homeScreenActive={homeScreenActive} />
         ) : bookMarksScreen ? (
           <Bookmarks />
         ) : null}
