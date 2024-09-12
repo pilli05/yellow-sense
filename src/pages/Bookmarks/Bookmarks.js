@@ -25,7 +25,7 @@ const Bookmarks = ({ homeScreenActive }) => {
   };
 
   return (
-    <div className="border-2 border-[rgb(8,18,33)] w-full h-[90%] overflow-y-auto mx-2 rounded-lg relative">
+    <div className="border-1 border-[rgb(8,18,33)] w-full h-[90%] overflow-y-auto mx-2 rounded-lg relative">
       <div className="fixed w-[93%] rounded-t-lg flex justify-between items-center px-5">
         <h1 className=" mt-4 mb-5 text-gray-800 text-2xl">BOOKMARKED JOBS</h1>
         <IoMdHome
