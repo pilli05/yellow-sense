@@ -12,9 +12,11 @@ const JobCard = ({
   pageSize,
   loader,
   jobsScreen,
-  bookMarkedJobsList,
+  bookMarkedJobsList = [],
 }) => {
-  const [bookMarkedJobs, setBookMarkedJobs] = useState([...bookMarkedJobsList]);
+  const [bookMarkedJobs, setBookMarkedJobs] = useState(
+    Array.isArray(bookMarkedJobsList) ? [...bookMarkedJobsList] : []
+  );
 
   const handleBookMark = (job) => {
     const bookMarked = bookMarkedJobs.some((item) => item.id === job.id);
@@ -70,9 +72,9 @@ const JobCard = ({
                 <img
                   src="/assets/profile.png"
                   alt="[company-profile-photo]"
-                  className="w-[60px] rounded-full border border-indigo-400"
+                  className="w-[40px] rounded-full border border-indigo-400"
                 />
-                <div className="ml-5 w-full text-left space-y-2 bg-transparent">
+                <div className="ml-5 w-full text-left space-y-4 bg-transparent">
                   <div className="flex items-start justify-between bg-transparent">
                     <h1 className=" text-gray-700 bg-transparent font-bold text-[18px]">
                       {job.company_name}
