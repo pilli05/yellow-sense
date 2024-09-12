@@ -81,14 +81,14 @@ const decreasePageSize = () =>{
             </div>
           ))
         : null}
-      {loader ? null : <div className="flex justify-between items-center my-5 px-5">
-        <button  className={pageSize === 1 ? "display: none text-white" : "display: block border-yellow-400 border px-5 py-2 rounded-full font-bold  text-yellow-400 flex items-center  w-[160px] justify-center text-base "} type="button" onClick={decreasePageSize}>
+        <div className="flex justify-between items-center my-5 px-5">
+        <button  className={pageSize === 1 ? "display: none text-transparent" : " border-yellow-400 border px-5 py-2 rounded-full font-bold  text-yellow-400 flex items-center  w-[160px] justify-center text-base "} type="button" onClick={decreasePageSize}>
           Prev
         </button>
         <button className="border border-purple-800 px-5 py-2 rounded-full font-bold  text-purple-800 flex items-center  w-[160px] justify-center text-base" type="button" onClick={increasePageSize} >
           Next
         </button>
-      </div>}
+      </div>
     </div>
   );
 };
