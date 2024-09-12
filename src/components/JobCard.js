@@ -28,30 +28,30 @@ const handleBookMark = (id) =>{
               style={{background:"#fff"}}
             >
               <img src="/assets/profile.png"  alt='[company-profile-photo]' className="w-[60px] rounded-full border border-indigo-400" />
-              <div className="ml-5 w-full text-left space-y-2">
-                  <div className="flex items-start justify-between">
-                  <h1 className=" text-gray-400">{job.company_name}</h1>
+              <div className="ml-5 w-full text-left space-y-2 bg-transparent">
+                  <div className="flex items-start justify-between bg-transparent">
+                  <h1 className=" text-gray-400 bg-transparent">{job.company_name}</h1>
                   {bookMark ? <IoIosBookmark color="red" onClick={()=>handleBookMark(job.id)} /> : <CiBookmark  onClick={()=>handleBookMark(job.id)}/>}
                   
                   </div>
-                  <p className="flex items-center">
+                  <p className="flex items-center bg-transparent">
                 <FaUserTie
                   className="mr-1"
                   style={{ background: "transparent" }}
                 />
                 {job?.job_role}
               </p>
-                  <p className="text-purple-600 flex items-center"><FaRupeeSign
+                  <p className="text-purple-600 flex items-center bg-transparent" ><FaRupeeSign
                   className="mr-1"
                   style={{ background: "transparent" }}/>{job?.primary_details?.Salary === "-" ? "Not Disclosed"  :job?.primary_details?.Salary}</p>
-                  <div className="flex justify-between">
-                  <p className="text-gray-500 flex items-center">
+                  <div className="flex justify-between bg-transparent">
+                  <p className="text-gray-500 flex items-center bg-transparent">
                 <FaLocationDot
                   className="mr-1"
                   style={{ background: "transparent" }}
                 />
                 {job?.primary_details?.Place}</p>
-                  <p className="text-gray-400 flex items-center"> <PiSuitcaseSimpleDuotone
+                  <p className="text-gray-400 flex items-center bg-transparent"> <PiSuitcaseSimpleDuotone
                   className="mr-1"
                   style={{ background: "transparent" }}
                 /> {job.job_hours}</p>
