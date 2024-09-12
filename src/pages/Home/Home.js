@@ -29,7 +29,7 @@ const Home = () => {
   return (
     <div className="h-screen w-screen  relative">
       <h1
-        className="font-bold text-2xl border-b border-b-gray-400 px-4 py-2 text-yellow-500 flex items-center cursor-pointer"
+        className="font-bold text-2xl border-b border-b-green-500 px-4 py-2 text-yellow-500 flex items-center cursor-pointer"
         onClick={() => homeScreenActive()}
       >
         <img
@@ -41,14 +41,14 @@ const Home = () => {
       </h1>
       <div className="font-bold text-3xl text-center h-content-height flex justify-center items-center section-container p3-2">
         {homeScreen ? (
-          " Welcome To YellowSense Job Portal"
+          <p className="leading-10">Welcome To <br/>YellowSense <br/>Job Portal</p>
         ) : jobsScreen ? (
           <Jobs />
         ) : bookMarksScreen ? (
           <Bookmarks />
         ) : null}
       </div>
-      <div className="flex justify-between items-center border-t border-t-gray-400 px-5 py-2 absolute bottom-0 left-0 w-full ">
+      <div className="flex justify-between items-center border-t border-t-green-500 px-5 py-2 absolute bottom-0 left-0 w-full ">
         <button
           className="bg-purple-600 px-5 py-2 rounded text-white font-semibold  flex items-center justify-center w-[160px]"
           onClick={() => jobsScreenActive()}
