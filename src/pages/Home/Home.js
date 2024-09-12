@@ -39,7 +39,7 @@ const Home = () => {
         />
         YellowSense
       </h1>
-      <div className="font-bold text-3xl text-center h-content-height flex justify-center items-center section-container px-2">
+      <div className="font-bold text-3xl text-center h-content-height flex justify-center items-center section-container p3-2">
         {homeScreen ? (
           " Welcome To YellowSense Job Portal"
         ) : jobsScreen ? (

@@ -1,49 +1,62 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CiBookmark } from "react-icons/ci";
 import { FaRupeeSign, FaUserTie } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
-import { IoLogoWhatsapp } from "react-icons/io";
+import { IoIosBookmark, IoLogoWhatsapp } from "react-icons/io";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
+import { PiSuitcaseSimpleDuotone } from "react-icons/pi";
+import { BookMarkContext } from "../App";
 
 const JobCard = ({ jobsList }) => {
   console.log(jobsList);
+
+  const {bookMark, setBookMark} = useContext(BookMarkContext)
+
+
+const handleBookMark = (id) =>{
+  console.log(id)
+}
+
+
   return (
-    <div className="">
+    <div className="" >
       {jobsList && jobsList.length > 0
         ? jobsList.map((job, index) => (
             <div
-              className="font-[800] grid grid-cols-2 gap-10  text-base my-3 px-3 border border-gray-300 mx-3 py-10 rounded-xl text-gray-800"
+              className=" shadow  text-base my-3 px-3 border border-gray-300 mx-3 py-3 rounded-xl text-gray-800 flex items-start"
               key={index}
+              style={{background:"#fff"}}
             >
-              <p className="flex items-center">
+              <img src="/assets/profile.png"  alt='[company-profile-photo]' className="w-[60px] rounded-full border border-indigo-400" />
+              <div className="ml-5 w-full text-left space-y-2">
+                  <div className="flex items-start justify-between">
+                  <h1 className=" text-gray-400">{job.company_name}</h1>
+                  {bookMark ? <IoIosBookmark color="red" onClick={()=>handleBookMark(job.id)} /> : <CiBookmark  onClick={()=>handleBookMark(job.id)}/>}
+                  
+                  </div>
+                  <p className="flex items-center">
                 <FaUserTie
-                  className="mr-2"
+                  className="mr-1"
                   style={{ background: "transparent" }}
                 />
                 {job?.job_role}
               </p>
-              <p className="flex items-center">
+                  <p className="text-purple-600 flex items-center"><FaRupeeSign
+                  className="mr-1"
+                  style={{ background: "transparent" }}/>{job?.primary_details?.Salary === "-" ? "Not Disclosed"  :job?.primary_details?.Salary}</p>
+                  <div className="flex justify-between">
+                  <p className="text-gray-500 flex items-center">
                 <FaLocationDot
-                  className="mr-2"
+                  className="mr-1"
                   style={{ background: "transparent" }}
                 />
-                {job?.primary_details?.Place}
-              </p>
-              <p className="flex items-center">
-                <FaRupeeSign
-                  className="mr-2"
+                {job?.primary_details?.Place}</p>
+                  <p className="text-gray-400 flex items-center"> <PiSuitcaseSimpleDuotone
+                  className="mr-1"
                   style={{ background: "transparent" }}
-                />
-                {job?.primary_details?.Salary === "-"
-                  ? "Not Disclosed"
-                  : job?.primary_details?.Salary}
-              </p>
-              <p className="flex items-center">
-                <IoLogoWhatsapp
-                  className="mr-2"
-                  style={{ background: "transparent" }}
-                />
-                {job?.whatsapp_no}
-              </p>
+                /> {job.job_hours}</p>
+                  </div>
+              </div>
             </div>
           ))
         : null}

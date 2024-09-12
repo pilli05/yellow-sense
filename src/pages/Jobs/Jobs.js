@@ -32,7 +32,7 @@ const Jobs = () => {
 
   return (
     <div className="border border-gray-300 w-full h-[90%] overflow-y-auto">
-      <h1 className="my-2 text-purple-800">Jobs</h1>
+      <h1 className="mt-2 mb-5 text-gray-800">Jobs</h1>
       <JobCard jobsList={newJobsList} />
     </div>
   );
