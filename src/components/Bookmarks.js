@@ -48,7 +48,7 @@ const Bookmarks = ({ homeScreenActive }) => {
         {bookMarkedJobsList && bookMarkedJobsList.length > 0 ? (
           bookMarkedJobsList.map((job, index) => (
             <div
-              className=" bg-white text-base my-[25px] px-2 border shadow-lg shadow-gray-500 border-gray-300  py-3 rounded-xl text-gray-800 flex items-start "
+              className=" bg-white text-base my-[25px] px-2 border shadow shadow-gray-500 border-gray-300  py-3 rounded-xl text-gray-800 flex items-start mx-2"
               key={index}
               style={{ background: "#fff" }}
             >
