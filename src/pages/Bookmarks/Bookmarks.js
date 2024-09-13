@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { IoIosBookmark, IoMdHome } from "react-icons/io";
 import { FaLocationDot } from "react-icons/fa6";
 import { PiSuitcaseSimpleDuotone } from "react-icons/pi";
-import { FaUserTie } from "react-icons/fa";
+import { FaLongArrowAltRight, FaUserTie } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Bookmarks = ({ homeScreenActive }) => {
   const [bookMarkedJobsList, setBookMarkedJobsList] = useState(
     JSON.parse(localStorage.getItem("BookMarkedJobs"))
   );
+
+  const navigate = useNavigate();
 
   const handleBookMark = (job) => {
     const bookMarked = bookMarkedJobsList.some((item) => item.id === job.id);
@@ -22,6 +25,12 @@ const Bookmarks = ({ homeScreenActive }) => {
 
     setBookMarkedJobsList(updateLocalStorage);
     localStorage.setItem("BookMarkedJobs", JSON.stringify(updateLocalStorage));
+  };
+
+  const handleJobPage = (job) => {
+    navigate("/job-details", {
+      state: { job },
+    });
   };
 
   return (
@@ -39,16 +48,19 @@ const Bookmarks = ({ homeScreenActive }) => {
         {bookMarkedJobsList && bookMarkedJobsList.length > 0 ? (
           bookMarkedJobsList.map((job, index) => (
             <div
-              className=" shadow  text-base my-3 px-3 border border-gray-300 mx-3 py-3 rounded-xl text-gray-800 flex items-start "
+              className=" bg-white text-base my-[25px] px-2 border shadow-lg shadow-gray-500 border-gray-300  py-3 rounded-xl text-gray-800 flex items-start "
               key={index}
               style={{ background: "#fff" }}
             >
-              <img
-                src="/assets/profile.png"
-                alt="[company-profile-photo]"
-                className="w-[60px] rounded-full border border-indigo-400"
-              />
-              <div className="ml-5 w-full text-left space-y-2 bg-transparent">
+              <div
+                className="px-1 w-full text-left space-y-4 bg-transparent"
+                style={{ background: "#fff" }}
+              >
+                <img
+                  src="/assets/profile.png"
+                  alt="[company-profile-photo]"
+                  className="w-[60px] rounded-full border border-indigo-400"
+                />
                 <div className="flex items-start justify-between bg-transparent">
                   <h1 className=" text-gray-700 bg-transparent font-bold text-[18px]">
                     {job.company_name}
@@ -93,6 +105,14 @@ const Bookmarks = ({ homeScreenActive }) => {
                     />{" "}
                     {job.job_hours}
                   </p>
+                </div>
+                <div className="flex justify-center bg-transparent">
+                  <span
+                    className="text-blue-800 font-bold bg-transparent flex items-center"
+                    onClick={() => handleJobPage(job)}
+                  >
+                    View Details <FaLongArrowAltRight className="ml-2 mt-1" />
+                  </span>
                 </div>
               </div>
             </div>

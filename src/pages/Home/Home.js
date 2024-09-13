@@ -52,14 +52,14 @@ const Home = () => {
       </div>
       <div className="flex justify-between items-center rounded-t-2xl bg-[#081221] px-5 py-4 absolute bottom-0 left-0 w-full ">
         <button
-          className="bg-purple-600 px-5 py-2 rounded text-white font-semibold  flex items-center justify-center w-[160px]"
+          className=" px-5 py-2 rounded text-white font-semibold  flex items-center justify-center "
           onClick={() => jobsScreenActive()}
         >
           <FaUserTie className="mr-2" style={{ background: "transparent" }} />
           JOBS
         </button>
         <button
-          className="bg-yellow-400 px-5 py-2 rounded font-semibold  text-white flex items-center  w-[160px] justify-center"
+          className=" px-5 py-2 rounded font-semibold  text-white flex items-center justify-center"
           onClick={() => bookMarksScreenActive()}
         >
           <FaBookmark className="mr-2" style={{ background: "transparent" }} />

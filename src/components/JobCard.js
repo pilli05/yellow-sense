@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { CiBookmark } from "react-icons/ci";
-import { FaUserTie } from "react-icons/fa";
+import { FaLongArrowAltRight, FaMoneyBill, FaUserTie } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoIosBookmark } from "react-icons/io";
-import { PiSuitcaseSimpleDuotone } from "react-icons/pi";
+import { PiSuitcaseSimpleFill } from "react-icons/pi";
 import { Oval } from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
 
 const JobCard = ({
   jobsList,
@@ -17,6 +18,8 @@ const JobCard = ({
   const [bookMarkedJobs, setBookMarkedJobs] = useState(
     Array.isArray(bookMarkedJobsList) ? [...bookMarkedJobsList] : []
   );
+
+  const navigate = useNavigate();
 
   const handleBookMark = (job) => {
     const bookMarked = bookMarkedJobs.some((item) => item.id === job.id);
@@ -39,6 +42,12 @@ const JobCard = ({
     if (pageSize > 1) {
       setPageSize((prevValue) => prevValue - 1);
     }
+  };
+
+  const handleJobPage = (job) => {
+    navigate("/job-details", {
+      state: { job },
+    });
   };
 
   return (
@@ -65,18 +74,20 @@ const JobCard = ({
 
             return (
               <div
-                className=" shadow  text-base my-3 px-3 border border-gray-300 mx-3 py-3 rounded-xl text-gray-800 flex items-start "
                 key={index}
-                style={{ background: "#fff" }}
+                className="bg-white text-base my-[25px] px-2 border shadow-lg shadow-gray-500 border-gray-300  py-3 rounded-xl text-gray-800 flex items-start "
               >
-                <img
-                  src="/assets/profile.png"
-                  alt="[company-profile-photo]"
-                  className="w-[40px] rounded-full border border-indigo-400"
-                />
-                <div className="ml-5 w-full text-left space-y-4 bg-transparent">
+                <div
+                  className="px-1 w-full text-left space-y-4 bg-transparent"
+                  style={{ background: "#fff" }}
+                >
+                  <img
+                    src="/assets/profile.png"
+                    alt="[company-profile-photo]"
+                    className="w-[40px] rounded-full border border-indigo-400"
+                  />
                   <div className="flex items-start justify-between bg-transparent">
-                    <h1 className=" text-gray-700 bg-transparent font-bold text-[18px]">
+                    <h1 className=" text-gray-400 bg-transparent font-bold text-[18px]">
                       {job.company_name}
                     </h1>
 
@@ -96,38 +107,51 @@ const JobCard = ({
                     )}
                   </div>
                   <div className="flex justify-between items-center bg-transparent">
-                    <p className="flex items-center bg-transparent">
+                    <p className="flex items-start bg-transparent">
                       <FaUserTie
-                        className="mr-1"
+                        className="mr-1 mt-1"
                         style={{ background: "transparent" }}
                         color="#081221"
                       />
                       {job?.job_role}
                     </p>
-                    <p className="text-gray-600  bg-transparent">
+                    <p className="text-gray-600  bg-transparent  flex items-start">
+                      <FaMoneyBill
+                        className="mr-1 mt-1"
+                        color="#081221"
+                        style={{ background: "transparent" }}
+                      />
                       {job?.primary_details?.Salary === "-"
                         ? "Not Disclosed"
                         : job?.primary_details?.Salary}
                     </p>
                   </div>
                   <div className="flex justify-between bg-transparent">
-                    <p className="text-gray-600 flex items-center bg-transparent">
+                    <p className="text-gray-600 flex items-start bg-transparent">
                       <FaLocationDot
-                        className="mr-1"
+                        className="mr-1 mt-1"
                         color="#081221"
                         style={{ background: "transparent" }}
                       />
                       {job?.primary_details?.Place}
                     </p>
-                    <p className="text-gray-600 flex items-center bg-transparent">
+                    <p className="text-gray-600 flex items-start bg-transparent">
                       {" "}
-                      <PiSuitcaseSimpleDuotone
-                        className="mr-1"
+                      <PiSuitcaseSimpleFill
+                        className="mr-1 mt-1"
                         style={{ background: "transparent" }}
                         color="#081221"
                       />{" "}
                       {job.job_hours}
                     </p>
+                  </div>
+                  <div className="flex justify-center bg-transparent">
+                    <span
+                      className="text-blue-800 font-bold bg-transparent flex items-center"
+                      onClick={() => handleJobPage(job)}
+                    >
+                      View Details <FaLongArrowAltRight className="ml-2 mt-1" />
+                    </span>
                   </div>
                 </div>
               </div>
@@ -154,8 +178,13 @@ const JobCard = ({
             Prev
           </button>
           <button
-            className="border border-purple-800 px-5 py-2 rounded-full font-bold  text-purple-800 flex items-center  w-[160px] justify-center text-base"
+            className={
+              pageSize === 3
+                ? "display: none text-transparent"
+                : "border border-purple-800 px-5 py-2 rounded-full font-bold  text-purple-800 flex items-center  w-[160px] justify-center text-base"
+            }
             type="button"
+            disabled={pageSize === 3}
             onClick={increasePageSize}
           >
             Next
