@@ -1,13 +1,13 @@
 import React from "react";
 import {
-  BarChart,
-  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   Legend,
   ResponsiveContainer,
+  Line,
+  LineChart,
 } from "recharts";
 
 const data = [
@@ -17,7 +17,7 @@ const data = [
   },
   {
     name: "Finance",
-    Jobs: 1398,
+    Jobs: 258,
   },
   {
     name: "Marketing",
@@ -34,30 +34,30 @@ const DashBoard = () => {
     <div className="flex flex-col justify-center items-center w-full h-[90%] overflow-y-auto mx-2 rounded-lg relative ">
       <h1 className="mb-5 ">DASHBOARD</h1>
       <ResponsiveContainer width="100%" height="90%">
-        <BarChart
+        <LineChart
           width={500}
           height={300}
           data={data}
           margin={{
             top: 5,
-            right: 10,
+            right: 20,
             left: 10,
-            bottom: 5,
+            bottom: 35,
           }}
-          barSize={15}
         >
-          <XAxis
-            dataKey="name"
-            scale="point"
-            padding={{ left: 10, right: 10 }}
-            tick={{ fontSize: 14 }}
-          />
-          <YAxis tick={{ fontSize: 14 }} />
+          <CartesianGrid strokeDasharray="1 1" />
+          <XAxis dataKey="name" tick={{ fontSize: 12, fill: "blue" }} />
+          <YAxis tick={{ fontSize: 14, fill: "blue" }} />
           <Tooltip />
           <Legend />
-          <CartesianGrid strokeDasharray="3 3" />
-          <Bar dataKey="Jobs" fill="#82ca9d" background={{ fill: "#eee" }} />
-        </BarChart>
+          <Line
+            type="monotone"
+            dataKey="Jobs"
+            stroke="#ffcc00"
+            activeDot={{ r: 8 }}
+            strokeWidth={2}
+          />
+        </LineChart>
       </ResponsiveContainer>
     </div>
   );
