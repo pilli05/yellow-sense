@@ -3,7 +3,7 @@ import "./App.css";
 import Home from "./pages/Home/Home";
 import Jobs from "./components/Jobs";
 import Bookmarks from "./components/Bookmarks";
-import JobDetails from "./components/JobDetails";
+import JobDetails from "./pages/JobDetails/JobDetails";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -22,7 +22,6 @@ function App() {
         pauseOnHover
         theme="light"
       />
-      {/* Same as */}
       <ToastContainer />
       <BrowserRouter>
         <Routes>

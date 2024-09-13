@@ -1,13 +1,7 @@
 import React from "react";
-import {
-  FaBlackTie,
-  FaLongArrowAltRight,
-  FaMoneyBill,
-  FaUserTie,
-} from "react-icons/fa";
+import { FaMoneyBill, FaUserTie } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
-import { IoLogoWhatsapp, IoMdHome } from "react-icons/io";
-import { IoPeopleSharp } from "react-icons/io5";
+import { IoMdHome } from "react-icons/io";
 import { PiSuitcaseSimpleFill } from "react-icons/pi";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
