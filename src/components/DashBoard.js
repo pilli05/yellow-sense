@@ -56,7 +56,7 @@ const DashBoard = () => {
           <Tooltip />
           <Legend />
           <CartesianGrid strokeDasharray="3 3" />
-          <Bar dataKey="Jobs" fill="#6600ff" background={{ fill: "#eee" }} />
+          <Bar dataKey="Jobs" fill="#ff9900" background={{ fill: "#eee" }} />
         </BarChart>
       </ResponsiveContainer>
     </div>

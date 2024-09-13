@@ -10,6 +10,7 @@ import { IoLogoWhatsapp, IoMdHome } from "react-icons/io";
 import { IoPeopleSharp } from "react-icons/io5";
 import { PiSuitcaseSimpleFill } from "react-icons/pi";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const JobDetails = () => {
   const navigate = useNavigate();
@@ -25,9 +26,13 @@ const JobDetails = () => {
     job_tags,
     num_applications,
   } = location?.state?.job;
-  console.log(location?.state?.job);
 
   const homeScreenActive = () => {
+    navigate("/");
+  };
+
+  const applyForJob = () => {
+    toast.success("Application sent successfully !!!");
     navigate("/");
   };
 
@@ -118,7 +123,9 @@ const JobDetails = () => {
             <p className="text-gray-600  bg-transparent">
               Contact No. : {whatsapp_no}
             </p>
-
+            <p className="bg-transparent  text-gray-600">
+              No. of Views : {views}
+            </p>
             <p className="  text-gray-600 bg-transparent">
               Qualifications : {primary_details?.Qualification}
             </p>
@@ -129,6 +136,17 @@ const JobDetails = () => {
             <p className=" text-gray-600   bg-transparent">
               Experiance : {primary_details?.Experience}
             </p>
+            <div
+              className="flex justify-center bg-transparent"
+              style={{ marginTop: "20px" }}
+            >
+              <button
+                className=" py-3 rounded-lg text-white bg-purple-600 w-full"
+                onClick={applyForJob}
+              >
+                APPLY
+              </button>
+            </div>
           </div>
         </div>
       </div>
