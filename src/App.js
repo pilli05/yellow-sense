@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home/Home";
-import Jobs from "./pages/Jobs/Jobs";
-import Bookmarks from "./pages/Bookmarks/Bookmarks";
+import Jobs from "./components/Jobs";
+import Bookmarks from "./components/Bookmarks";
 import JobDetails from "./components/JobDetails";
 
 function App() {

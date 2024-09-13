@@ -75,7 +75,7 @@ const JobCard = ({
             return (
               <div
                 key={index}
-                className="bg-white text-base my-[25px] px-2 border shadow-lg shadow-gray-500 border-gray-300  py-3 rounded-xl text-gray-800 flex items-start "
+                className="bg-white text-base my-[25px] px-2 border shadow shadow-gray-400 border-gray-300  py-3 rounded-xl text-gray-800 flex items-start "
               >
                 <div
                   className="px-1 w-full text-left space-y-4 bg-transparent"

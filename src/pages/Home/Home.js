@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { FaBookmark, FaUserTie } from "react-icons/fa";
-import Jobs from "../Jobs/Jobs";
-import Bookmarks from "../Bookmarks/Bookmarks";
+import Jobs from "../../components/Jobs";
+import Bookmarks from "../../components/Bookmarks";
+import DashBoard from "../../components/DashBoard";
 
 const Home = () => {
   const [homeScreen, setHomeScreen] = useState(true);
@@ -41,9 +42,7 @@ const Home = () => {
       </h1>
       <div className="font-bold text-3xl text-center h-content-height flex justify-center mt-3 section-container p-1">
         {homeScreen ? (
-          <p className="text-center self-center px-10">
-            Welcome To YellowSense Job Portal
-          </p>
+          <DashBoard />
         ) : jobsScreen ? (
           <Jobs homeScreenActive={homeScreenActive} jobsScreen={jobsScreen} />
         ) : bookMarksScreen ? (

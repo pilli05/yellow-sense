@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import JobCard from "../../components/JobCard";
+import JobCard from "./JobCard";
 import { IoMdHome } from "react-icons/io";
 
 const Jobs = ({ homeScreenActive, jobsScreen }) => {
@@ -43,7 +43,7 @@ const Jobs = ({ homeScreenActive, jobsScreen }) => {
 
   return (
     <div className="border-1 border-[rgb(8,18,33)] w-full h-[90%] overflow-y-auto mx-2 rounded-lg relative">
-      <div className="fixed w-[93%] md:w-[97%] rounded-t-lg flex justify-between items-center px-5">
+      <div className="fixed w-[94%] md:w-[97%] rounded-t-lg flex justify-between items-center px-5">
         <h1 className=" mt-4 mb-5 text-gray-800 text-2xl">JOBS</h1>
         <IoMdHome
           size={28}
