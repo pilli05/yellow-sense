@@ -54,7 +54,7 @@ const JobDetails = () => {
               onClick={homeScreenActive}
             />
           </div>
-          <div className="shadow-lg shadow-gray-400 bg-transparent text-gray-600 text-left bg-white  rounded-lg p-5 mx-2 my-3 space-y-3">
+          <div className="text-sm shadow-lg shadow-gray-400 bg-transparent text-gray-600 text-left bg-white  rounded-lg p-5 mx-2 my-3 space-y-3">
             <div className="flex justify-center bg-transparent">
               <img
                 src="/assets/profile.png"
@@ -74,7 +74,7 @@ const JobDetails = () => {
                 <FaUserTie
                   className="mr-1 mt-1"
                   style={{ background: "transparent" }}
-                  color="#081221"
+                  color="blue"
                 />
                 {job_role}
               </p>
@@ -82,7 +82,7 @@ const JobDetails = () => {
               <p className="bg-transparent   flex items-start">
                 <FaMoneyBill
                   className="mr-1 mt-1"
-                  color="#081221"
+                  color="blue"
                   style={{ background: "transparent" }}
                 />
                 {primary_details?.Salary === "-"
@@ -95,7 +95,7 @@ const JobDetails = () => {
               <p className="text-gray-600 flex items-start bg-transparent ">
                 <FaLocationDot
                   className="mr-1 mt-1"
-                  color="#081221"
+                  color="blue"
                   style={{ background: "transparent" }}
                 />
                 {primary_details?.Place}
@@ -105,7 +105,7 @@ const JobDetails = () => {
                 <PiSuitcaseSimpleFill
                   className="mr-1 mt-1"
                   style={{ background: "transparent" }}
-                  color="#081221"
+                  color="blue"
                 />{" "}
                 {job_hours}
               </p>

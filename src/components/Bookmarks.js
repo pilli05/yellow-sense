@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { IoIosBookmark, IoMdHome } from "react-icons/io";
 import { FaLocationDot } from "react-icons/fa6";
 import { PiSuitcaseSimpleDuotone } from "react-icons/pi";
-import { FaLongArrowAltRight, FaUserTie } from "react-icons/fa";
+import { FaLongArrowAltRight, FaMoneyBill, FaUserTie } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const Bookmarks = ({ homeScreenActive }) => {
@@ -48,7 +48,7 @@ const Bookmarks = ({ homeScreenActive }) => {
         {bookMarkedJobsList && bookMarkedJobsList.length > 0 ? (
           bookMarkedJobsList.map((job, index) => (
             <div
-              className=" bg-white text-base my-[25px] px-2 border  border-gray-300  py-3 rounded-xl text-gray-800 flex items-start mx-2"
+              className=" bg-white text-sm my-[25px] px-2 border  border-gray-300  py-3 rounded-xl text-gray-800 flex items-start mx-2"
               key={index}
               style={{ background: "#fff" }}
             >
@@ -62,7 +62,7 @@ const Bookmarks = ({ homeScreenActive }) => {
                   className="w-[60px] rounded-full border border-indigo-400"
                 />
                 <div className="flex items-start justify-between bg-transparent">
-                  <h1 className=" text-gray-700 bg-transparent font-bold text-[18px]">
+                  <h1 className=" text-purple-700 bg-transparent font-bold text-[18px]">
                     {job.company_name}
                   </h1>
                   <IoIosBookmark
@@ -77,11 +77,16 @@ const Bookmarks = ({ homeScreenActive }) => {
                     <FaUserTie
                       className="mr-1"
                       style={{ background: "transparent" }}
-                      color="#081221"
+                      color="blue"
                     />
                     {job?.job_role}
                   </p>
-                  <p className="text-gray-600  bg-transparent">
+                  <p className="text-gray-600  bg-transparent  flex items-start">
+                    <FaMoneyBill
+                      className="mr-1 mt-1"
+                      color="blue"
+                      style={{ background: "transparent" }}
+                    />
                     {job?.primary_details?.Salary === "-"
                       ? "Not Disclosed"
                       : job?.primary_details?.Salary}
@@ -91,7 +96,7 @@ const Bookmarks = ({ homeScreenActive }) => {
                   <p className="text-gray-600 flex items-center bg-transparent">
                     <FaLocationDot
                       className="mr-1"
-                      color="#081221"
+                      color="blue"
                       style={{ background: "transparent" }}
                     />
                     {job?.primary_details?.Place}
@@ -101,7 +106,7 @@ const Bookmarks = ({ homeScreenActive }) => {
                     <PiSuitcaseSimpleDuotone
                       className="mr-1"
                       style={{ background: "transparent" }}
-                      color="#081221"
+                      color="blue"
                     />{" "}
                     {job.job_hours}
                   </p>

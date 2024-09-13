@@ -78,7 +78,7 @@ const JobCard = ({
                 className="bg-white text-base my-[25px] px-2 border  border-gray-300  py-3 rounded-xl text-gray-800 flex items-start mx-2"
               >
                 <div
-                  className="px-1 w-full text-left space-y-4 bg-transparent"
+                  className="px-1 w-full text-left space-y-4 bg-transparent text-sm"
                   style={{ background: "#fff" }}
                 >
                   <img
@@ -87,7 +87,7 @@ const JobCard = ({
                     className="w-[40px] rounded-full border border-indigo-400"
                   />
                   <div className="flex items-start justify-between bg-transparent">
-                    <h1 className=" text-gray-400 bg-transparent font-bold text-[18px]">
+                    <h1 className=" text-purple-700 bg-transparent font-bold text-[18px]">
                       {job.company_name}
                     </h1>
 
@@ -111,14 +111,14 @@ const JobCard = ({
                       <FaUserTie
                         className="mr-1 mt-1"
                         style={{ background: "transparent" }}
-                        color="#081221"
+                        color="blue"
                       />
                       {job?.job_role}
                     </p>
                     <p className="text-gray-600  bg-transparent  flex items-start">
                       <FaMoneyBill
                         className="mr-1 mt-1"
-                        color="#081221"
+                        color="blue"
                         style={{ background: "transparent" }}
                       />
                       {job?.primary_details?.Salary === "-"
@@ -130,7 +130,7 @@ const JobCard = ({
                     <p className="text-gray-600 flex items-start bg-transparent">
                       <FaLocationDot
                         className="mr-1 mt-1"
-                        color="#081221"
+                        color="blue"
                         style={{ background: "transparent" }}
                       />
                       {job?.primary_details?.Place}
@@ -140,7 +140,7 @@ const JobCard = ({
                       <PiSuitcaseSimpleFill
                         className="mr-1 mt-1"
                         style={{ background: "transparent" }}
-                        color="#081221"
+                        color="blue"
                       />{" "}
                       {job.job_hours}
                     </p>
